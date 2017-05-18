@@ -12,7 +12,6 @@
 #endif
 
 
-
 class AnalogSens {
 
 
@@ -20,18 +19,25 @@ public:
 
     AnalogSens(uint8_t pin);
 
+    AnalogSens(uint8_t pin, uint8_t buffer);
+
     void init();
+
+    void init(uint8_t absorption);
 
     void read();
 
+    void read(uint8_t absorption);
+
     int mean();
 
+protected:
+    int absorption(uint8_t times);
 
 private:
+    uint8_t sensBuf;
     uint8_t sensPin;
     int sensData[ANALOG_SENS_BUFFER_SIZE];
-
-
 
 
 };
